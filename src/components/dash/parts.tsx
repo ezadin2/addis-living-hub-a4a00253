@@ -16,11 +16,11 @@ export function StatCard({ label, value, hint, tone = "accent" }: {
     destructive: "bg-destructive",
   } as const;
   return (
-    <div className="rounded-xl border border-border bg-card p-5 shadow-card">
+    <div className="rounded-xl border border-border bg-card p-4 shadow-card sm:p-5">
       <p className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
         <span className={cn("h-1.5 w-1.5 rounded-full", tones[tone])} />{label}
       </p>
-      <p className="mt-3 font-display text-2xl font-bold tracking-tight">{value}</p>
+      <p className="mt-3 truncate font-display text-xl font-bold sm:text-2xl tracking-tight">{value}</p>
       {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
     </div>
   );
