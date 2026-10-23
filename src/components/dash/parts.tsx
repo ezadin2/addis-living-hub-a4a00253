@@ -27,14 +27,14 @@ export function StatCard({ label, value, hint, tone = "accent" }: {
 }
 
 export function StatGrid({ children }: { children: ReactNode }) {
-  return <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{children}</div>;
+  return <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">{children}</div>;
 }
 
 export function Panel({ title, action, children, className }: { title: string; action?: ReactNode; children: ReactNode; className?: string }) {
   return (
     <section className={cn("rounded-xl border border-border bg-card shadow-card", className)}>
-      <div className="flex items-center justify-between gap-3 border-b border-border px-5 py-3.5">
-        <h2 className="text-base font-semibold">{title}</h2>
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-3.5">
+        <h2 className="whitespace-nowrap text-base font-semibold">{title}</h2>
         {action}
       </div>
       <div className="p-5">{children}</div>

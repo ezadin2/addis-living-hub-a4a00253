@@ -240,7 +240,7 @@ function ListingsTab({ d }: { d: D }) {
   const rows = d.listings.filter((l) => !status || l.status === status);
   return (
     <Panel title={`${rows.length} listings`} action={
-      <div className="flex gap-1">{["pending", "approved", "rejected", "draft", ""].map((s) => (
+      <div className="flex flex-wrap gap-1">{["pending", "approved", "rejected", "draft", ""].map((s) => (
         <button key={s} onClick={() => setStatus(s)} className={status === s ? btnAccent : btn}>{s || "All"}</button>
       ))}</div>}>
       {rows.length === 0 ? <Empty text="Nothing here." /> : (
