@@ -21,6 +21,7 @@ import { Route as RenterRouteImport } from './routes/renter'
 import { Route as SafetyRouteImport } from './routes/safety'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as VerifyRouteImport } from './routes/verify'
+import { Route as AgreementsIdRouteImport } from './routes/agreements.$id'
 import { Route as RentalsIndexRouteImport } from './routes/rentals.index'
 import { Route as RentalsIdRouteImport } from './routes/rentals.$id'
 
@@ -84,6 +85,11 @@ const VerifyRoute = VerifyRouteImport.update({
   path: '/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgreementsIdRoute = AgreementsIdRouteImport.update({
+  id: '/agreements/$id',
+  path: '/agreements/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RentalsIndexRoute = RentalsIndexRouteImport.update({
   id: '/rentals/',
   path: '/rentals/',
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/safety': typeof SafetyRoute
   '/signin': typeof SigninRoute
   '/verify': typeof VerifyRoute
+  '/agreements/$id': typeof AgreementsIdRoute
   '/rentals/$id': typeof RentalsIdRoute
   '/rentals/': typeof RentalsIndexRoute
 }
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/safety': typeof SafetyRoute
   '/signin': typeof SigninRoute
   '/verify': typeof VerifyRoute
+  '/agreements/$id': typeof AgreementsIdRoute
   '/rentals/$id': typeof RentalsIdRoute
   '/rentals': typeof RentalsIndexRoute
 }
@@ -141,6 +149,7 @@ export interface FileRoutesById {
   '/safety': typeof SafetyRoute
   '/signin': typeof SigninRoute
   '/verify': typeof VerifyRoute
+  '/agreements/$id': typeof AgreementsIdRoute
   '/rentals/$id': typeof RentalsIdRoute
   '/rentals/': typeof RentalsIndexRoute
 }
@@ -159,6 +168,7 @@ export interface FileRouteTypes {
     | '/safety'
     | '/signin'
     | '/verify'
+    | '/agreements/$id'
     | '/rentals/$id'
     | '/rentals/'
   fileRoutesByTo: FileRoutesByTo
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
     | '/safety'
     | '/signin'
     | '/verify'
+    | '/agreements/$id'
     | '/rentals/$id'
     | '/rentals'
   id:
@@ -191,6 +202,7 @@ export interface FileRouteTypes {
     | '/safety'
     | '/signin'
     | '/verify'
+    | '/agreements/$id'
     | '/rentals/$id'
     | '/rentals/'
   fileRoutesById: FileRoutesById
@@ -208,6 +220,7 @@ export interface RootRouteChildren {
   SafetyRoute: typeof SafetyRoute
   SigninRoute: typeof SigninRoute
   VerifyRoute: typeof VerifyRoute
+  AgreementsIdRoute: typeof AgreementsIdRoute
   RentalsIdRoute: typeof RentalsIdRoute
   RentalsIndexRoute: typeof RentalsIndexRoute
 }
@@ -298,6 +311,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agreements/$id': {
+      id: '/agreements/$id'
+      path: '/agreements/$id'
+      fullPath: '/agreements/$id'
+      preLoaderRoute: typeof AgreementsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rentals/': {
       id: '/rentals/'
       path: '/rentals'
@@ -328,6 +348,7 @@ const rootRouteChildren: RootRouteChildren = {
   SafetyRoute: SafetyRoute,
   SigninRoute: SigninRoute,
   VerifyRoute: VerifyRoute,
+  AgreementsIdRoute: AgreementsIdRoute,
   RentalsIdRoute: RentalsIdRoute,
   RentalsIndexRoute: RentalsIndexRoute,
 }
