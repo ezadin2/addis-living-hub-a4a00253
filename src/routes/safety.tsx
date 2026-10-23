@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ThumbsUp, OctagonAlert } from "lucide-react";
 import { PageShell, PageHeading } from "@/components/site/PageShell";
 import { VerificationBadge } from "@/components/site/VerificationBadge";
 import { Button } from "@/components/ui/button";
@@ -33,14 +32,14 @@ function Page() {
         </section>
         <section className="space-y-6">
           <div className="rounded-xl border border-border bg-card p-6">
-            <h2 className="flex items-center gap-2 text-xl font-bold"><span className="grid h-9 w-9 place-items-center rounded-lg bg-accent-soft"><ThumbsUp className="h-5 w-5 text-accent" /></span>Do</h2>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
+            <h2 className="text-lg font-bold">Do</h2>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground marker:text-border">
               <li>View the property in person before paying anything.</li><li>Ask to see proof of ownership or agency authorization.</li><li>Put agreed terms in writing.</li><li>Keep communication on FaydaRent where possible.</li>
             </ul>
           </div>
           <div className="rounded-xl border border-border bg-card p-6">
-            <h2 className="flex items-center gap-2 text-xl font-bold"><span className="grid h-9 w-9 place-items-center rounded-lg bg-destructive/10"><OctagonAlert className="h-5 w-5 text-destructive" /></span>Watch out for</h2>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
+            <h2 className="text-lg font-bold text-destructive">Watch out for</h2>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground marker:text-border">
               <li>Requests for a deposit before a viewing.</li><li>Prices far below the neighborhood average.</li><li>Pressure to decide immediately.</li><li>Anyone asking for your Fayda OTP or ID number.</li>
             </ul>
           </div>

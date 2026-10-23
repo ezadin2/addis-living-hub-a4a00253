@@ -1,8 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import {
-  ArrowRight, BadgeCheck, Building2, Car, FileSignature, Home, KeyRound, Lock, Search, ShieldCheck, Sofa, Store, Users, Eye,
-} from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import { PageShell } from "@/components/site/PageShell";
 import { ListingCard } from "@/components/site/ListingCard";
@@ -14,7 +12,6 @@ import { CATEGORIES, NEIGHBORHOODS, fallbackImage, formatETB, listingImages, uni
 const kindOf = (v: string): Kind | undefined =>
   v.startsWith("kind:") ? (v.slice(5) as Kind) : CATEGORIES.find((c) => c.id === v)?.kind;
 import { publicListingsQuery } from "@/lib/queries";
-import { Construction, Truck } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,9 +28,9 @@ export const Route = createFileRoute("/")({
 });
 
 const HOME_CATS = [
-  { id: "apartment", kind: "property", icon: Building2 }, { id: "house", kind: "property", icon: Home }, { id: "room", kind: "property", icon: Users },
-  { id: "commercial", kind: "property", icon: Store }, { id: "furnished", kind: "property", icon: Sofa },
-  { id: "car", kind: "vehicle", icon: Car }, { id: "truck", kind: "vehicle", icon: Truck }, { id: "construction", kind: "equipment", icon: Construction },
+  { id: "apartment", kind: "property" }, { id: "house", kind: "property" }, { id: "room", kind: "property" },
+  { id: "commercial", kind: "property" }, { id: "furnished", kind: "property" },
+  { id: "car", kind: "vehicle" }, { id: "truck", kind: "vehicle" }, { id: "construction", kind: "equipment" },
 ] as const;
 
 function Index() {
@@ -48,14 +45,12 @@ function Index() {
 
       <section className="container-page mt-20">
         <SectionHead title="Browse by category" link={{ to: "/categories", label: "All categories" }} />
-        <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {HOME_CATS.map((h) => {
             const c = CATEGORIES.find((x) => x.id === h.id)!;
-            const Icon = h.icon;
             return (
-              <Link key={c.id} to="/rentals" search={{ kind: h.kind, category: c.id }} className="rounded-xl border border-border bg-card p-5 shadow-card transition hover:-translate-y-0.5 hover:shadow-lift">
-                <Icon className="h-6 w-6 text-accent" />
-                <p className="mt-4 font-semibold">{c.label}</p>
+              <Link key={c.id} to="/rentals" search={{ kind: h.kind, category: c.id }} className="group rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent">
+                <p className="flex items-center justify-between font-semibold">{c.label}<ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-accent" /></p>
                 <p className="mt-1 text-xs text-muted-foreground">{c.blurb}</p>
               </Link>
             );
@@ -74,20 +69,16 @@ function Index() {
 
       <section className="container-page mt-20">
         <SectionHead title="How it works" link={{ to: "/how-it-works", label: "Learn more" }} />
-        <ol className="mt-6 grid gap-6 md:grid-cols-3">
+        <ol className="mt-8 grid gap-8 md:grid-cols-3">
           {[
-            [Search, "Discover or list", "Search verified listings across Ethiopia, or publish your own property in minutes."],
-            [BadgeCheck, "Verify your identity", "Confirm who you are through Fayda once the authorized integration is live."],
-            [FileSignature, "Agree transparently", "Contact the other party, review terms and complete a digital rental agreement."],
-          ].map(([Icon, t, d], i) => {
-            const I = Icon as typeof Search;
+            ["Discover or list", "Search verified listings across Ethiopia, or publish your own property in minutes."],
+            ["Verify your identity", "Confirm who you are through Fayda once the authorized integration is live."],
+            ["Agree transparently", "Contact the other party, review terms and complete a digital rental agreement."],
+          ].map(([t, d], i) => {
             return (
-              <li key={t as string} className="rounded-xl border border-border bg-card p-6 shadow-card">
-                <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-primary font-display text-sm font-bold text-primary-foreground">{i + 1}</span>
-                  <I className="h-5 w-5 text-accent" />
-                </div>
-                <h3 className="mt-4 font-semibold">{t as string}</h3>
+              <li key={t as string} className="border-t-2 border-primary pt-5">
+                <span className="font-display text-sm font-bold text-accent">0{i + 1}</span>
+                <h3 className="mt-2 text-lg font-semibold">{t as string}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{d as string}</p>
               </li>
             );
@@ -188,12 +179,10 @@ function Hero() {
       <div className="absolute inset-0 -z-10 hero-overlay" />
       <div className="container-page py-20 sm:py-28">
         <div className="max-w-2xl text-primary-foreground">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-xs font-medium">
-            <ShieldCheck className="h-4 w-4 text-accent" /> Trust-first renting in Ethiopia
-          </span>
-          <h1 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl">Find your next rental.<br />Houses, rooms, vehicles & equipment.</h1>
-          <p className="mt-4 text-base text-primary-foreground/80 sm:text-lg">
-            Discover houses, rooms, vehicles and equipment for rent across Ethiopia, connect with owners, and build trust through verified identities and transparent rental agreements.
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/70">Trust-first renting in Ethiopia</p>
+          <h1 className="mt-4 text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl">Find your next rental.</h1>
+          <p className="mt-5 max-w-xl text-base text-primary-foreground/80 sm:text-lg">
+            Houses, rooms, vehicles and equipment across Ethiopia — from owners with verified identities and clear, upfront terms.
           </p>
         </div>
         <form
@@ -211,7 +200,7 @@ function Hero() {
               },
             });
           }}
-          className="mt-10 grid gap-3 rounded-2xl bg-card p-4 shadow-lift sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_0.8fr_0.8fr_0.7fr_auto]"
+          className={"mt-10 grid gap-3 rounded-2xl bg-card p-4 shadow-lift sm:grid-cols-2 " + (kindOf(category) === "property" ? "lg:grid-cols-[1.3fr_1fr_0.8fr_0.8fr_0.7fr_auto]" : "lg:grid-cols-[1.3fr_1fr_0.8fr_0.8fr_auto]")}
         >
           <label className="text-xs font-semibold text-muted-foreground">Neighborhood
             <select value={neighborhood} onChange={(e) => setN(e.target.value)} className={field + " mt-1"}>
@@ -246,16 +235,12 @@ function Hero() {
                 </select>
               </label>
             );
-            return (
-              <label className="text-xs font-semibold text-muted-foreground">{kind === "vehicle" ? "Vehicles" : kind === "equipment" ? "Equipment" : "Any type"}
-                <div className={field + " mt-1 flex items-center text-muted-foreground"}>{kind ? "Priced per day" : "Houses, cars & more"}</div>
-              </label>
-            );
+            return null;
           })()}
-          <Button type="submit" variant="accent" size="lg" className="self-end"><Search /> Search</Button>
+          <Button type="submit" variant="accent" size="lg" className="h-11 self-end sm:col-span-2 lg:col-span-1"><Search /> Search</Button>
         </form>
-        <p className="mt-4 flex items-center gap-2 text-xs text-primary-foreground/70">
-          <Lock className="h-3.5 w-3.5" /> Fayda identity verification will be offered through an authorized integration. FaydaRent is not endorsed by the National ID Program.
+        <p className="mt-4 max-w-2xl text-xs text-primary-foreground/60">
+          Fayda identity verification will be offered through an authorized integration. FaydaRent is not endorsed by the National ID Program.
         </p>
       </div>
     </section>
@@ -264,12 +249,12 @@ function Hero() {
 
 function TrustSection() {
   const items = [
-    [BadgeCheck, "Identity verification", "Owners and renters can confirm identity through an authorized Fayda integration."],
-    [Eye, "Clear verification status", "Every profile and listing shows exactly what has — and hasn't — been checked."],
-    [KeyRound, "Transparent terms", "Rent, deposit, fees and minimum duration are shown up front."],
-    [FileSignature, "Digital agreements", "Generate a written agreement both parties review and accept."],
-    [Lock, "Privacy by design", "We never show ID numbers or sensitive identity data publicly."],
-    [ShieldCheck, "Traceability", "Inquiries and agreements are recorded to help resolve disputes."],
+    ["Identity verification", "Owners and renters can confirm identity through an authorized Fayda integration."],
+    ["Clear verification status", "Every profile and listing shows exactly what has — and hasn't — been checked."],
+    ["Transparent terms", "Rent, deposit, fees and minimum duration are shown up front."],
+    ["Digital agreements", "Generate a written agreement both parties review and accept."],
+    ["Privacy by design", "We never show ID numbers or sensitive identity data publicly."],
+    ["Traceability", "Inquiries and agreements are recorded to help resolve disputes."],
   ] as const;
   return (
     <section className="mt-20 bg-card border-y border-border">
@@ -280,10 +265,9 @@ function TrustSection() {
           <p className="mt-4 text-muted-foreground">Identity verification confirms who someone is. It does not prove that they own a property or that a listing is genuine — always view in person before paying.</p>
           <Button asChild variant="outline" className="mt-6"><Link to="/safety">Read our safety guide</Link></Button>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {items.map(([Icon, t, d]) => (
-            <div key={t} className="flex gap-4 rounded-xl border border-border p-5">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-accent-soft"><Icon className="h-5 w-5 text-accent" /></span>
+        <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
+          {items.map(([t, d]) => (
+            <div key={t} className="border-l-2 border-accent pl-4">
               <div>
                 <h3 className="font-semibold">{t}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{d}</p>
