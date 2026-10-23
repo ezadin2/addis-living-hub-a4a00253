@@ -10,33 +10,206 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CategoriesRouteImport } from './routes/categories'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as LegalRouteImport } from './routes/legal'
+import { Route as ListPropertyRouteImport } from './routes/list-property'
+import { Route as OwnerRouteImport } from './routes/owner'
+import { Route as RenterRouteImport } from './routes/renter'
+import { Route as SafetyRouteImport } from './routes/safety'
+import { Route as SigninRouteImport } from './routes/signin'
+import { Route as VerifyRouteImport } from './routes/verify'
+import { Route as RentalsIndexRouteImport } from './routes/rentals.index'
+import { Route as RentalsIdRouteImport } from './routes/rentals.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategoriesRoute = CategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListPropertyRoute = ListPropertyRouteImport.update({
+  id: '/list-property',
+  path: '/list-property',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerRoute = OwnerRouteImport.update({
+  id: '/owner',
+  path: '/owner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RenterRoute = RenterRouteImport.update({
+  id: '/renter',
+  path: '/renter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SafetyRoute = SafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SigninRoute = SigninRouteImport.update({
+  id: '/signin',
+  path: '/signin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyRoute = VerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RentalsIndexRoute = RentalsIndexRouteImport.update({
+  id: '/rentals/',
+  path: '/rentals/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RentalsIdRoute = RentalsIdRouteImport.update({
+  id: '/rentals/$id',
+  path: '/rentals/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/categories': typeof CategoriesRoute
+  '/dashboard': typeof DashboardRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/legal': typeof LegalRoute
+  '/list-property': typeof ListPropertyRoute
+  '/owner': typeof OwnerRoute
+  '/renter': typeof RenterRoute
+  '/safety': typeof SafetyRoute
+  '/signin': typeof SigninRoute
+  '/verify': typeof VerifyRoute
+  '/rentals/$id': typeof RentalsIdRoute
+  '/rentals/': typeof RentalsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/categories': typeof CategoriesRoute
+  '/dashboard': typeof DashboardRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/legal': typeof LegalRoute
+  '/list-property': typeof ListPropertyRoute
+  '/owner': typeof OwnerRoute
+  '/renter': typeof RenterRoute
+  '/safety': typeof SafetyRoute
+  '/signin': typeof SigninRoute
+  '/verify': typeof VerifyRoute
+  '/rentals/$id': typeof RentalsIdRoute
+  '/rentals': typeof RentalsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/categories': typeof CategoriesRoute
+  '/dashboard': typeof DashboardRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/legal': typeof LegalRoute
+  '/list-property': typeof ListPropertyRoute
+  '/owner': typeof OwnerRoute
+  '/renter': typeof RenterRoute
+  '/safety': typeof SafetyRoute
+  '/signin': typeof SigninRoute
+  '/verify': typeof VerifyRoute
+  '/rentals/$id': typeof RentalsIdRoute
+  '/rentals/': typeof RentalsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/categories'
+    | '/dashboard'
+    | '/how-it-works'
+    | '/legal'
+    | '/list-property'
+    | '/owner'
+    | '/renter'
+    | '/safety'
+    | '/signin'
+    | '/verify'
+    | '/rentals/$id'
+    | '/rentals/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/categories'
+    | '/dashboard'
+    | '/how-it-works'
+    | '/legal'
+    | '/list-property'
+    | '/owner'
+    | '/renter'
+    | '/safety'
+    | '/signin'
+    | '/verify'
+    | '/rentals/$id'
+    | '/rentals'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/categories'
+    | '/dashboard'
+    | '/how-it-works'
+    | '/legal'
+    | '/list-property'
+    | '/owner'
+    | '/renter'
+    | '/safety'
+    | '/signin'
+    | '/verify'
+    | '/rentals/$id'
+    | '/rentals/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  CategoriesRoute: typeof CategoriesRoute
+  DashboardRoute: typeof DashboardRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  LegalRoute: typeof LegalRoute
+  ListPropertyRoute: typeof ListPropertyRoute
+  OwnerRoute: typeof OwnerRoute
+  RenterRoute: typeof RenterRoute
+  SafetyRoute: typeof SafetyRoute
+  SigninRoute: typeof SigninRoute
+  VerifyRoute: typeof VerifyRoute
+  RentalsIdRoute: typeof RentalsIdRoute
+  RentalsIndexRoute: typeof RentalsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +221,115 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categories': {
+      id: '/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/list-property': {
+      id: '/list-property'
+      path: '/list-property'
+      fullPath: '/list-property'
+      preLoaderRoute: typeof ListPropertyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner': {
+      id: '/owner'
+      path: '/owner'
+      fullPath: '/owner'
+      preLoaderRoute: typeof OwnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/renter': {
+      id: '/renter'
+      path: '/renter'
+      fullPath: '/renter'
+      preLoaderRoute: typeof RenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/safety': {
+      id: '/safety'
+      path: '/safety'
+      fullPath: '/safety'
+      preLoaderRoute: typeof SafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signin': {
+      id: '/signin'
+      path: '/signin'
+      fullPath: '/signin'
+      preLoaderRoute: typeof SigninRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify': {
+      id: '/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof VerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rentals/': {
+      id: '/rentals/'
+      path: '/rentals'
+      fullPath: '/rentals/'
+      preLoaderRoute: typeof RentalsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rentals/$id': {
+      id: '/rentals/$id'
+      path: '/rentals/$id'
+      fullPath: '/rentals/$id'
+      preLoaderRoute: typeof RentalsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  CategoriesRoute: CategoriesRoute,
+  DashboardRoute: DashboardRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  LegalRoute: LegalRoute,
+  ListPropertyRoute: ListPropertyRoute,
+  OwnerRoute: OwnerRoute,
+  RenterRoute: RenterRoute,
+  SafetyRoute: SafetyRoute,
+  SigninRoute: SigninRoute,
+  VerifyRoute: VerifyRoute,
+  RentalsIdRoute: RentalsIdRoute,
+  RentalsIndexRoute: RentalsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
