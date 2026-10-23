@@ -8,3 +8,4 @@
 - [x] Featured listings (owner request -> admin confirm) and business plans (Basic/Pro)
 - [x] Admin: moderation, users, reports, settings, subscriptions & featured
 - Blocked: live Fayda integration (needs government API access), automated payments (needs payment provider), insurance, mobile app (future phases)
+- [x] Re-imported into a fresh project on Lovable Cloud; UI polish pass (fewer decorative icons, tighter hero/search, mobile layout)

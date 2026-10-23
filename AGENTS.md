@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Database schema lives in drizzle/migrations and is applied through the Lovable migration tool; keep new SQL there so the backend stays reproducible.
