@@ -86,7 +86,7 @@ export function AgreementQR(p: Props) {
           <span className="absolute bottom-0 right-0 h-5 w-5 rounded-br-lg border-b-[3px] border-r-[3px] border-accent" />
           {qr ? <img src={qr} alt={`QR code for agreement ${ref}`} className="h-36 w-36" /> : <div className="h-36 w-36 animate-pulse rounded bg-muted" />}
         </div>
-        <div className="min-w-0 flex-1 text-center sm:text-left">
+        <div className="w-full min-w-0 flex-1 text-center sm:text-left">
           <p className="font-display text-lg font-bold tracking-tight">{ref}</p>
           <p className="mt-1 text-sm text-muted-foreground">Anyone can scan this to confirm the agreement is genuine and see its status. No personal details are shown.</p>
           <p className="mt-1 truncate text-xs text-muted-foreground">{url}</p>
