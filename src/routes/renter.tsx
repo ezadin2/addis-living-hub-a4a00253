@@ -1,3 +1,4 @@
+import { AgreementQR } from "@/components/dash/AgreementQR";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -208,6 +209,7 @@ function AgreementsTab({ d }: { d: D }) {
               <pre className="mt-3 max-h-56 overflow-auto whitespace-pre-wrap rounded-md bg-muted p-3 font-sans text-xs">{a.terms}</pre>
               {a.status === "shared" && <button className={btnAccent + " mt-3"} onClick={() => { if (window.confirm("Accept these terms?")) void act(() => supabase.from("agreements").update({ status: "accepted" }).eq("id", a.id), "Agreement accepted"); }}><FileSignature className="h-3.5 w-3.5" />Accept agreement</button>}
               {a.accepted_at && <p className="mt-2 text-xs text-muted-foreground">You accepted on {fmtDate(a.accepted_at)}</p>}
+              {(a.status === "shared" || a.status === "accepted") && <AgreementQR id={a.id} title={titleOf(d, a.listing_id)} status={a.status} date={a.accepted_at ?? a.shared_at ?? a.created_at} />}
             </div>
           ))}
         </div>

@@ -1,3 +1,4 @@
+import { AgreementQR } from "@/components/dash/AgreementQR";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
@@ -455,6 +456,7 @@ function AgreementsTab({ d }: { d: D }) {
                   {(a.status === "draft" || a.status === "shared") && <button className={btnDanger} onClick={() => void act(() => supabase.from("agreements").update({ status: "cancelled" }).eq("id", a.id), "Agreement cancelled")}>Cancel</button>}
                   {a.accepted_at && <p className="text-xs text-muted-foreground">Accepted {fmtDate(a.accepted_at)}</p>}
                 </div>
+                {(a.status === "shared" || a.status === "accepted") && <AgreementQR id={a.id} title={title(a.listing_id)} status={a.status} date={a.accepted_at ?? a.shared_at ?? a.created_at} />}
               </div>
             ))}
           </div>
