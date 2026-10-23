@@ -6,20 +6,21 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 
-export function StatCard({ icon: Icon, label, value, hint, tone = "accent" }: {
-  icon: LucideIcon; label: string; value: ReactNode; hint?: string; tone?: "accent" | "warning" | "primary" | "destructive";
+export function StatCard({ label, value, hint, tone = "accent" }: {
+  icon?: LucideIcon; label: string; value: ReactNode; hint?: string; tone?: "accent" | "warning" | "primary" | "destructive";
 }) {
   const tones = {
-    accent: "bg-accent-soft text-accent",
-    warning: "bg-warning-soft text-foreground",
-    primary: "bg-secondary text-primary",
-    destructive: "bg-destructive/10 text-destructive",
+    accent: "bg-accent",
+    warning: "bg-warning",
+    primary: "bg-primary",
+    destructive: "bg-destructive",
   } as const;
   return (
     <div className="rounded-xl border border-border bg-card p-5 shadow-card">
-      <span className={cn("grid h-9 w-9 place-items-center rounded-lg", tones[tone])}><Icon className="h-4 w-4" /></span>
-      <p className="mt-4 font-display text-2xl font-bold">{value}</p>
-      <p className="text-sm text-muted-foreground">{label}</p>
+      <p className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+        <span className={cn("h-1.5 w-1.5 rounded-full", tones[tone])} />{label}
+      </p>
+      <p className="mt-3 font-display text-2xl font-bold tracking-tight">{value}</p>
       {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
     </div>
   );

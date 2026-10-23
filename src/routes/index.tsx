@@ -50,7 +50,7 @@ function Index() {
             const c = CATEGORIES.find((x) => x.id === h.id)!;
             return (
               <Link key={c.id} to="/rentals" search={{ kind: h.kind, category: c.id }} className="group rounded-xl border border-border bg-card p-4 transition-colors hover:border-accent sm:p-5">
-                <p className="flex items-center justify-between font-semibold">{c.label}<ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-accent" /></p>
+                <p className="flex items-start justify-between gap-2 font-semibold">{c.label}<ArrowRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-accent" /></p>
                 <p className="mt-1 hidden text-xs text-muted-foreground sm:block">{c.blurb}</p>
               </Link>
             );
