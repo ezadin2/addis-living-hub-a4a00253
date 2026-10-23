@@ -45,13 +45,13 @@ function Index() {
 
       <section className="container-page mt-20">
         <SectionHead title="Browse by category" link={{ to: "/categories", label: "All categories" }} />
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
           {HOME_CATS.map((h) => {
             const c = CATEGORIES.find((x) => x.id === h.id)!;
             return (
-              <Link key={c.id} to="/rentals" search={{ kind: h.kind, category: c.id }} className="group rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent">
+              <Link key={c.id} to="/rentals" search={{ kind: h.kind, category: c.id }} className="group rounded-xl border border-border bg-card p-4 transition-colors hover:border-accent sm:p-5">
                 <p className="flex items-center justify-between font-semibold">{c.label}<ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-accent" /></p>
-                <p className="mt-1 text-xs text-muted-foreground">{c.blurb}</p>
+                <p className="mt-1 hidden text-xs text-muted-foreground sm:block">{c.blurb}</p>
               </Link>
             );
           })}
@@ -200,15 +200,15 @@ function Hero() {
               },
             });
           }}
-          className={"mt-10 grid gap-3 rounded-2xl bg-card p-4 shadow-lift sm:grid-cols-2 " + (kindOf(category) === "property" ? "lg:grid-cols-[1.3fr_1fr_0.8fr_0.8fr_0.7fr_auto]" : "lg:grid-cols-[1.3fr_1fr_0.8fr_0.8fr_auto]")}
+          className={"mt-10 grid grid-cols-2 gap-3 rounded-2xl bg-card p-4 shadow-lift " + (kindOf(category) === "property" ? "lg:grid-cols-[1.3fr_1fr_0.8fr_0.8fr_0.7fr_auto]" : "lg:grid-cols-[1.3fr_1fr_0.8fr_0.8fr_auto]")}
         >
-          <label className="text-xs font-semibold text-muted-foreground">Neighborhood
+          <label className="col-span-2 text-xs font-semibold text-muted-foreground sm:col-span-1">Neighborhood
             <select value={neighborhood} onChange={(e) => setN(e.target.value)} className={field + " mt-1"}>
               <option value="">Anywhere in Addis Ababa</option>
               {NEIGHBORHOODS.map((n) => <option key={n}>{n}</option>)}
             </select>
           </label>
-          <label className="text-xs font-semibold text-muted-foreground">What are you renting?
+          <label className="col-span-2 text-xs font-semibold text-muted-foreground sm:col-span-1">What are you renting?
             <select value={category} onChange={(e) => { setC(e.target.value); if (e.target.value && kindOf(e.target.value) !== "property") setB(""); }} className={field + " mt-1"}>
               <option value="">All categories</option>
               {([["property", "Properties"], ["vehicle", "Vehicles"], ["equipment", "Equipment"]] as const).map(([k, label]) => (
@@ -237,7 +237,7 @@ function Hero() {
             );
             return null;
           })()}
-          <Button type="submit" variant="accent" size="lg" className="h-11 self-end sm:col-span-2 lg:col-span-1"><Search /> Search</Button>
+          <Button type="submit" variant="accent" size="lg" className="col-span-2 h-11 self-end lg:col-span-1"><Search /> Search</Button>
         </form>
         <p className="mt-4 max-w-2xl text-xs text-primary-foreground/60">
           Fayda identity verification will be offered through an authorized integration. FaydaRent is not endorsed by the National ID Program.
